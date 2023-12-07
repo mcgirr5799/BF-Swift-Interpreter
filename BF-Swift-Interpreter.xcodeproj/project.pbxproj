@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A4DD8722B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DD8712B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift */; };
 		0A4DD8742B2242E6000A99E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DD8732B2242E6000A99E2 /* ContentView.swift */; };
-		0A4DD8762B2242E6000A99E2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DD8752B2242E6000A99E2 /* Item.swift */; };
 		0A4DD8782B2242E8000A99E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A4DD8772B2242E8000A99E2 /* Assets.xcassets */; };
 		0A4DD87B2B2242E8000A99E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A4DD87A2B2242E8000A99E2 /* Preview Assets.xcassets */; };
 		0A4DD8852B2242E9000A99E2 /* BF_Swift_InterpreterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DD8842B2242E9000A99E2 /* BF_Swift_InterpreterTests.swift */; };
@@ -38,7 +37,6 @@
 		0A4DD86E2B2242E6000A99E2 /* BF-Swift-Interpreter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BF-Swift-Interpreter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A4DD8712B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BF_Swift_InterpreterApp.swift; sourceTree = "<group>"; };
 		0A4DD8732B2242E6000A99E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0A4DD8752B2242E6000A99E2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0A4DD8772B2242E8000A99E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A4DD87A2B2242E8000A99E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A4DD8802B2242E9000A99E2 /* BF-Swift-InterpreterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BF-Swift-InterpreterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +96,6 @@
 			children = (
 				0A4DD8712B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift */,
 				0A4DD8732B2242E6000A99E2 /* ContentView.swift */,
-				0A4DD8752B2242E6000A99E2 /* Item.swift */,
 				0A4DD8772B2242E8000A99E2 /* Assets.xcassets */,
 				0A4DD8792B2242E8000A99E2 /* Preview Content */,
 			);
@@ -261,7 +258,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A4DD8742B2242E6000A99E2 /* ContentView.swift in Sources */,
-				0A4DD8762B2242E6000A99E2 /* Item.swift in Sources */,
 				0A4DD8722B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
