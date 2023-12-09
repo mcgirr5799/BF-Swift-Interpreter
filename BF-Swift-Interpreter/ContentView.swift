@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         VStack{
             Text("Welcome \(username)!")
-            
+
             Button(action: {
                             // Action to be performed when the button is tapped
                             brainfuckTest()

@@ -12,7 +12,7 @@ import SwiftData
 struct BF_Swift_InterpreterApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
