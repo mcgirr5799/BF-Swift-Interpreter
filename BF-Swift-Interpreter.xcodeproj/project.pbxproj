@@ -15,6 +15,7 @@
 		0A4DD88F2B2242E9000A99E2 /* BF_Swift_InterpreterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DD88E2B2242E9000A99E2 /* BF_Swift_InterpreterUITests.swift */; };
 		0A4DD8912B2242E9000A99E2 /* BF_Swift_InterpreterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DD8902B2242E9000A99E2 /* BF_Swift_InterpreterUITestsLaunchTests.swift */; };
 		0A5429AB2B23FA9800959A57 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5429AA2B23FA9800959A57 /* HomeView.swift */; };
+		0A5429AF2B240BA900959A57 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5429AE2B240BA900959A57 /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		0A4DD88E2B2242E9000A99E2 /* BF_Swift_InterpreterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BF_Swift_InterpreterUITests.swift; sourceTree = "<group>"; };
 		0A4DD8902B2242E9000A99E2 /* BF_Swift_InterpreterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BF_Swift_InterpreterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0A5429AA2B23FA9800959A57 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0A5429AE2B240BA900959A57 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,10 +98,11 @@
 		0A4DD8702B2242E6000A99E2 /* BF-Swift-Interpreter */ = {
 			isa = PBXGroup;
 			children = (
+				0A5429AD2B240B9000959A57 /* ButtonView */,
+				0A5429AC2B23FAAA00959A57 /* HomeView */,
 				0A4DD8712B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift */,
 				0A4DD8772B2242E8000A99E2 /* Assets.xcassets */,
 				0A4DD8792B2242E8000A99E2 /* Preview Content */,
-				0A5429AC2B23FAAA00959A57 /* HomeView */,
 			);
 			path = "BF-Swift-Interpreter";
 			sourceTree = "<group>";
@@ -135,6 +138,14 @@
 				0A5429AA2B23FA9800959A57 /* HomeView.swift */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		0A5429AD2B240B9000959A57 /* ButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				0A5429AE2B240BA900959A57 /* ButtonView.swift */,
+			);
+			path = ButtonView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 			files = (
 				0A4DD8722B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift in Sources */,
 				0A5429AB2B23FA9800959A57 /* HomeView.swift in Sources */,
+				0A5429AF2B240BA900959A57 /* ButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

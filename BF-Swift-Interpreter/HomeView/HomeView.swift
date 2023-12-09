@@ -19,32 +19,7 @@ struct HomeView: View {
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            VStack {
-                HStack {
-                    Button(action: { print("Button 1 tapped") }) {
-                        Text("+")
-                    }.buttonStyle(BorderedButtonStyle())
-                    
-                    Button(action: {
-                        // Add your action for Button 2 here
-                    }) {
-                        Text("Button 2")
-                    }.buttonStyle(BorderedButtonStyle())
-                    
-                    Button(action: {
-                        // Add your action for Button 3 here
-                    }) {
-                        Text("Button 3")
-                    }.buttonStyle(BorderedButtonStyle())
-                    
-                    Button(action: {
-                        // Add your action for Button 4 here
-                    }) {
-                        Text("Button 4")
-                    }.buttonStyle(BorderedButtonStyle())
-                }
-            }
-
+            ButtonView()
         }
     }
 }
