@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2B9E872B23E4CE009B1748 /* Brainfuck in Frameworks */ = {isa = PBXBuildFile; productRef = 0A2B9E862B23E4CE009B1748 /* Brainfuck */; };
 		0A4DD8722B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DD8712B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift */; };
 		0A4DD8742B2242E6000A99E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DD8732B2242E6000A99E2 /* ContentView.swift */; };
 		0A4DD8782B2242E8000A99E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A4DD8772B2242E8000A99E2 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A2B9E872B23E4CE009B1748 /* Brainfuck in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = "BF-Swift-Interpreter";
+			packageProductDependencies = (
+				0A2B9E862B23E4CE009B1748 /* Brainfuck */,
+			);
 			productName = "BF-Swift-Interpreter";
 			productReference = 0A4DD86E2B2242E6000A99E2 /* BF-Swift-Interpreter.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 0A4DD8652B2242E6000A99E2;
+			packageReferences = (
+				0A2B9E852B23E4CE009B1748 /* XCLocalSwiftPackageReference "Brainfuck-Library" */,
+			);
 			productRefGroup = 0A4DD86F2B2242E6000A99E2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -588,6 +596,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		0A2B9E852B23E4CE009B1748 /* XCLocalSwiftPackageReference "Brainfuck-Library" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "Brainfuck-Library";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0A2B9E862B23E4CE009B1748 /* Brainfuck */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Brainfuck;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0A4DD8662B2242E6000A99E2 /* Project object */;
 }

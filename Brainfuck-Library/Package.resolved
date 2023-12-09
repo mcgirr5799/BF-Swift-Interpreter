@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Ogma",
+        "repositoryURL": "https://github.com/nerdsupremacist/Ogma.git",
+        "state": {
+          "branch": null,
+          "revision": "541e3c43d68d64296533d28b0b32bfb9fe189a4f",
+          "version": "0.1.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
