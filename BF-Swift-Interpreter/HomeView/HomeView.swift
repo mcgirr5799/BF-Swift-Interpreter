@@ -10,9 +10,17 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         VStack{
-            Text("BF Interpreter")
-            CellView()
-            
+            ScrollView{
+                
+                Spacer()
+                CellView()
+                
+                Spacer()
+                InputView()
+                
+                Spacer()
+                OutputView()
+            }
             ButtonView()
         }
     }

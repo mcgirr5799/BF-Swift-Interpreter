@@ -88,6 +88,17 @@ struct ButtonView: View {
                 }.buttonStyle(BorderedButtonStyle())
                 Spacer()
             }
+            
+            Button(action: {}) {
+                Text("Compile")
+                    .padding()
+                    .font(.title)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+            }.buttonStyle(BorderedButtonStyle())
+                .background(Color.red)
+                .cornerRadius(10)
+                .padding()
         }
 
     }

@@ -1,16 +1,31 @@
 import SwiftUI
 
+import SwiftUI
+
 struct OutputView: View {
-    @Binding var output: String
+    @State private var codeOutput: String = "test"
+
     var body: some View {
-        Text(output)
-            .padding()
-            .background(Color.gray)
-            .cornerRadius(5.0)
-            .padding(.bottom, 20)
+        VStack(alignment: .leading) {
+            Text("Output:")
+                .font(.headline) // Makes the title stand out
+                .padding(.leading) // Add padding to align with the output box
+
+            HStack {
+                Spacer()
+                Text(codeOutput)
+                    .padding()
+                    .frame(minHeight: 100)// Ensures a similar height to the input view
+                    .frame(maxWidth: .infinity)
+                    .border(Color.gray, width: 1)
+                    .clipShape(RoundedRectangle(cornerRadius: 10)) // Rounded corners
+                Spacer()
+            }
+        }
     }
 }
 
 #Preview {
-    OutputView(output: .constant(""))
+    OutputView()
 }
+
