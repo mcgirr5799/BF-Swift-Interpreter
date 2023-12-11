@@ -8,25 +8,16 @@
 import SwiftUI
 
 struct HomeView: View {
-    
-    @State private var bfRawCode: String = ""
-    
     var body: some View {
         VStack{
             Text("BF Interpreter")
-            
-            TextField("Code here: ", text: $bfRawCode)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            CellView()
             
             ButtonView()
         }
     }
 }
 
-func print(){
-    print("Hey")
-}
 #Preview {
     HomeView()
 }
