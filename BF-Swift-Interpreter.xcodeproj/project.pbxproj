@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A2B9E872B23E4CE009B1748 /* Brainfuck in Frameworks */ = {isa = PBXBuildFile; productRef = 0A2B9E862B23E4CE009B1748 /* Brainfuck */; };
 		0A4DD8722B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DD8712B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift */; };
 		0A4DD8782B2242E8000A99E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A4DD8772B2242E8000A99E2 /* Assets.xcassets */; };
 		0A4DD87B2B2242E8000A99E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A4DD87A2B2242E8000A99E2 /* Preview Assets.xcassets */; };
@@ -16,6 +15,8 @@
 		0A4DD8912B2242E9000A99E2 /* BF_Swift_InterpreterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DD8902B2242E9000A99E2 /* BF_Swift_InterpreterUITestsLaunchTests.swift */; };
 		0A5429AB2B23FA9800959A57 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5429AA2B23FA9800959A57 /* HomeView.swift */; };
 		0A5429AF2B240BA900959A57 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5429AE2B240BA900959A57 /* ButtonView.swift */; };
+		0A5429B22B268D0A00959A57 /* Interpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5429B12B268D0A00959A57 /* Interpreter.swift */; };
+		0A5429B42B26978C00959A57 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5429B32B26978C00959A57 /* Content.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		0A4DD8902B2242E9000A99E2 /* BF_Swift_InterpreterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BF_Swift_InterpreterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0A5429AA2B23FA9800959A57 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0A5429AE2B240BA900959A57 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		0A5429B12B268D0A00959A57 /* Interpreter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interpreter.swift; sourceTree = "<group>"; };
+		0A5429B32B26978C00959A57 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A2B9E872B23E4CE009B1748 /* Brainfuck in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,11 +100,13 @@
 		0A4DD8702B2242E6000A99E2 /* BF-Swift-Interpreter */ = {
 			isa = PBXGroup;
 			children = (
+				0A5429B02B268CDB00959A57 /* Interpreter */,
 				0A5429AD2B240B9000959A57 /* ButtonView */,
 				0A5429AC2B23FAAA00959A57 /* HomeView */,
 				0A4DD8712B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift */,
 				0A4DD8772B2242E8000A99E2 /* Assets.xcassets */,
 				0A4DD8792B2242E8000A99E2 /* Preview Content */,
+				0A5429B32B26978C00959A57 /* Content.swift */,
 			);
 			path = "BF-Swift-Interpreter";
 			sourceTree = "<group>";
@@ -148,6 +152,14 @@
 			path = ButtonView;
 			sourceTree = "<group>";
 		};
+		0A5429B02B268CDB00959A57 /* Interpreter */ = {
+			isa = PBXGroup;
+			children = (
+				0A5429B12B268D0A00959A57 /* Interpreter.swift */,
+			);
+			path = Interpreter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,7 +177,6 @@
 			);
 			name = "BF-Swift-Interpreter";
 			packageProductDependencies = (
-				0A2B9E862B23E4CE009B1748 /* Brainfuck */,
 			);
 			productName = "BF-Swift-Interpreter";
 			productReference = 0A4DD86E2B2242E6000A99E2 /* BF-Swift-Interpreter.app */;
@@ -240,7 +251,6 @@
 			);
 			mainGroup = 0A4DD8652B2242E6000A99E2;
 			packageReferences = (
-				0A2B9E852B23E4CE009B1748 /* XCLocalSwiftPackageReference "Brainfuck-Library" */,
 			);
 			productRefGroup = 0A4DD86F2B2242E6000A99E2 /* Products */;
 			projectDirPath = "";
@@ -284,8 +294,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A5429B22B268D0A00959A57 /* Interpreter.swift in Sources */,
 				0A4DD8722B2242E6000A99E2 /* BF_Swift_InterpreterApp.swift in Sources */,
 				0A5429AB2B23FA9800959A57 /* HomeView.swift in Sources */,
+				0A5429B42B26978C00959A57 /* Content.swift in Sources */,
 				0A5429AF2B240BA900959A57 /* ButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -616,20 +628,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCLocalSwiftPackageReference section */
-		0A2B9E852B23E4CE009B1748 /* XCLocalSwiftPackageReference "Brainfuck-Library" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "Brainfuck-Library";
-		};
-/* End XCLocalSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0A2B9E862B23E4CE009B1748 /* Brainfuck */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Brainfuck;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0A4DD8662B2242E6000A99E2 /* Project object */;
 }
