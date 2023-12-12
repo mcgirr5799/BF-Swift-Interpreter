@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ButtonView: View {
+    @Binding var inputCode: String
+
     var body: some View {
         VStack {
             HStack {
@@ -89,7 +91,9 @@ struct ButtonView: View {
                 Spacer()
             }
             
-            Button(action: {}) {
+            Button(action: {
+                interpretCode(code: inputCode)
+            }) {
                 Text("Compile")
                     .padding()
                     .font(.title)
@@ -104,6 +108,16 @@ struct ButtonView: View {
     }
 }
 
-#Preview {
-    ButtonView()
+func interpretCode(code: String) {
+   // Logic to interpret the code goes here
+   print("Interpreting code: \(code)")
+   print("Fuck yeah we are printing shit")
+}
+                   
+struct ButtonView_Previews: PreviewProvider {
+    @State static var dummyInputCode: String = "Dummy Code"
+
+    static var previews: some View {
+        ButtonView(inputCode: $dummyInputCode)
+    }
 }

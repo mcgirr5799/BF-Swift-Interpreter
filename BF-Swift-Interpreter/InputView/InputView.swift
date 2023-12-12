@@ -3,7 +3,7 @@ import SwiftUI
 import SwiftUI
 
 struct InputView: View {
-    @State private var inputCode: String = "Enter code:"
+    @Binding var inputCode: String
     @State private var isEditing: Bool = false
 
     var body: some View {
@@ -31,6 +31,10 @@ struct InputView: View {
     }
 }
 
-#Preview {
-    InputView()
+struct InputView_Previews: PreviewProvider {
+    @State static var inputCode: String = "Enter code:"
+
+    static var previews: some View {
+        InputView(inputCode: $inputCode)
+    }
 }

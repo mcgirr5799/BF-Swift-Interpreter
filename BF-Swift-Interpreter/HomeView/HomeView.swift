@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var inputCode: String = "Enter code:"
+
     var body: some View {
         VStack{
             ScrollView{
@@ -16,12 +18,12 @@ struct HomeView: View {
                 CellView()
                 
                 Spacer()
-                InputView()
+                InputView(inputCode: $inputCode)
                 
                 Spacer()
                 OutputView()
             }
-            ButtonView()
+            ButtonView(inputCode: $inputCode)
         }
     }
 }
