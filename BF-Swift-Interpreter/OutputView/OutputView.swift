@@ -3,7 +3,7 @@ import SwiftUI
 import SwiftUI
 
 struct OutputView: View {
-    @State private var codeOutput: String = "test"
+    @State private var codeOutput: String = ""
 
     var body: some View {
         VStack(alignment: .leading) {

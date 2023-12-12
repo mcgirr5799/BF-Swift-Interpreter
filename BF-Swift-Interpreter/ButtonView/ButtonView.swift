@@ -14,7 +14,9 @@ struct ButtonView: View {
         VStack {
             HStack {
                 Spacer()
-                Button(action: { print("Button 1 tapped") }) {
+                Button(action: {
+                    appendCharacter(">")
+                }) {
                     Text(">")
                         .padding()
                         .font(.title)
@@ -22,9 +24,8 @@ struct ButtonView: View {
                     .buttonStyle(BorderedButtonStyle())
                 
                 Spacer()
-                
                 Button(action: {
-                    // Add your action for Button 2 here
+                    appendCharacter("<")
                 }) {
                     Text("<")
                         .padding()
@@ -35,7 +36,7 @@ struct ButtonView: View {
                 
                 Spacer()
                 Button(action: {
-                    // Add your action for Button 3 here
+                    appendCharacter("+")
                 }) {
                     Text("+")
                         .padding()
@@ -44,27 +45,30 @@ struct ButtonView: View {
                 
                 Spacer()
                 Button(action: {
-                    // Add your action for Button 4 here
+                    appendCharacter("-")
                 }) {
                     Text("-")
                         .padding()
                         .font(.title)
                 }.buttonStyle(BorderedButtonStyle())
+                
                 Spacer()
             }
             
             HStack {
                 Spacer()
-                Button(action: { print("Button 1 tapped") }) {
+                Button(action: {
+                    appendCharacter("[")
+                }) {
                     Text("[")
                         .padding()
                         .font(.title)
                 }
                     .buttonStyle(BorderedButtonStyle())
-                Spacer()
                 
+                Spacer()
                 Button(action: {
-                    // Add your action for Button 2 here
+                    appendCharacter("]")
                 }) {
                     Text("]")
                         .padding()
@@ -73,7 +77,7 @@ struct ButtonView: View {
                 
                 Spacer()
                 Button(action: {
-                    // Add your action for Button 3 here
+                    appendCharacter(",")
                 }) {
                     Text(",")
                         .padding()
@@ -82,7 +86,7 @@ struct ButtonView: View {
                 
                 Spacer()
                 Button(action: {
-                    // Add your action for Button 4 here
+                    appendCharacter(".")
                 }) {
                     Text(".")
                         .padding()
@@ -91,20 +95,50 @@ struct ButtonView: View {
                 Spacer()
             }
             
-            Button(action: {
-                interpretCode(code: inputCode)
-            }) {
-                Text("Compile")
+            HStack {
+                Button(action: {
+                    interpretCode(code: inputCode)
+                }) {
+                    Text("Compile")
+                        .padding()
+                        .font(.title)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                }.buttonStyle(BorderedButtonStyle())
+                    .background(Color.red)
+                    .cornerRadius(10)
                     .padding()
-                    .font(.title)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-            }.buttonStyle(BorderedButtonStyle())
-                .background(Color.red)
-                .cornerRadius(10)
-                .padding()
+                
+                
+                Button(action: {
+                    backspace()
+                }) {
+                    Text("←")
+                        .padding()
+                        .font(.title)
+                        .frame(maxWidth: .infinity)
+                }.buttonStyle(BorderedButtonStyle())
+                    .cornerRadius(10)
+                    .padding()
+            }
         }
 
+    }
+    
+    private func appendCharacter(_ char: String) {
+            if inputCode == "Enter code:" {
+                inputCode = char
+            } else {
+                inputCode.append(char)
+            }
+    }
+    
+    private func backspace() {
+            if inputCode == "Enter code:" {
+                inputCode.removeAll()
+            } else if inputCode.count > 0 {
+                inputCode.removeLast()
+            }
     }
 }
 
