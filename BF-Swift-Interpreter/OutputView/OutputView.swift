@@ -3,7 +3,7 @@ import SwiftUI
 import SwiftUI
 
 struct OutputView: View {
-    @State private var codeOutput: String = ""
+    @Binding var outputCode: String
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -13,7 +13,7 @@ struct OutputView: View {
 
             HStack {
                 Spacer()
-                Text(codeOutput)
+                Text(outputCode)
                     .padding()
                     .frame(minHeight: 100)// Ensures a similar height to the input view
                     .frame(maxWidth: .infinity)
@@ -25,7 +25,11 @@ struct OutputView: View {
     }
 }
 
-#Preview {
-    OutputView()
+struct outputView_Previews: PreviewProvider {
+    @State static var outputCode: String = "OutputCode"
+
+    static var previews: some View {
+        OutputView(outputCode: $outputCode)
+    }
 }
 

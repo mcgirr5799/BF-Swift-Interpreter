@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CellView: View {
-    @StateObject private var cellsAdapter = CellsAdapter()
+    @ObservedObject var cellsAdapter: CellsAdapter
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: true) { // Ensure scroll indicators are shown
@@ -40,7 +40,8 @@ struct CellView: View {
 
 struct CellView_Previews: PreviewProvider {
     static var previews: some View {
-        CellView()
+        CellView(cellsAdapter: CellsAdapter())
     }
 }
+
 

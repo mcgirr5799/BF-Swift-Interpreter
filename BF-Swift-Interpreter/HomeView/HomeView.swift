@@ -9,21 +9,23 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var inputCode: String = "Enter code:"
+    @State private var outputCode: String = ""
+    @StateObject private var cellsAdapter = CellsAdapter()
 
     var body: some View {
         VStack{
             ScrollView{
                 
                 Spacer()
-                CellView()
+                CellView(cellsAdapter: cellsAdapter)
                 
                 Spacer()
                 InputView(inputCode: $inputCode)
                 
                 Spacer()
-                OutputView()
+                OutputView(outputCode: $outputCode)
             }
-            ButtonView(inputCode: $inputCode)
+            ButtonView(inputCode: $inputCode, outputCode: $outputCode, cellsAdapter: cellsAdapter)
         }
     }
 }

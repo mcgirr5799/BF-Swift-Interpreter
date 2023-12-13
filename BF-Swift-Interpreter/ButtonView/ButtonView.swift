@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ButtonView: View {
     @Binding var inputCode: String
-
+    @Binding var outputCode: String
+    @ObservedObject var cellsAdapter: CellsAdapter
+    
     var body: some View {
         VStack {
             HStack {
@@ -97,7 +99,7 @@ struct ButtonView: View {
             
             HStack {
                 Button(action: {
-                    interpretCode(code: inputCode)
+                    interpretCode(inputCode: inputCode, cellsAdapter: cellsAdapter)
                 }) {
                     Text("Compile")
                         .padding()
@@ -140,18 +142,23 @@ struct ButtonView: View {
                 inputCode.removeLast()
             }
     }
+    
+    func interpretCode(inputCode: String, cellsAdapter: CellsAdapter) {
+        let interpreter = Interpreter(inputCode: inputCode, cellsAdapter: cellsAdapter)
+        interpreter.interpret()
+        
+        DispatchQueue.main.async {
+            self.outputCode = interpreter.outputCode
+        }
+    }
 }
 
-func interpretCode(code: String) {
-   // Logic to interpret the code goes here
-   print("Interpreting code: \(code)")
-   print("Fuck yeah we are printing shit")
-}
                    
 struct ButtonView_Previews: PreviewProvider {
     @State static var dummyInputCode: String = "Dummy Code"
+    @State static var dummyOutputCode: String = "Dummy Output"
 
     static var previews: some View {
-        ButtonView(inputCode: $dummyInputCode)
+        ButtonView(inputCode: $dummyInputCode, outputCode: $dummyOutputCode, cellsAdapter: CellsAdapter())
     }
 }
