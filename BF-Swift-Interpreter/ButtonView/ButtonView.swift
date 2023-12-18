@@ -15,6 +15,19 @@ struct ButtonView: View {
     var body: some View {
         VStack {
             HStack {
+                Button("Step") {
+                    interpretCode(inputCode: inputCode, cellsAdapter: cellsAdapter, step: true)
+                }
+                .padding()
+                .buttonStyle(BorderedButtonStyle())
+
+                Button("Reset") {
+                    interpreterReset()
+                }
+                .padding()
+                .buttonStyle(BorderedButtonStyle())
+            }
+            HStack {
                 Spacer()
                 Button(action: {
                     appendCharacter(">")
@@ -150,6 +163,21 @@ struct ButtonView: View {
         DispatchQueue.main.async {
             self.outputCode = interpreter.outputCode
         }
+    }
+    
+    func interpretCode(inputCode: String, cellsAdapter: CellsAdapter, step: Bool) {
+        if step{
+            let interpreter = Interpreter(inputCode: inputCode, cellsAdapter: cellsAdapter)
+            interpreter.step()
+            
+            DispatchQueue.main.async {
+                self.outputCode = interpreter.outputCode
+            }
+        }
+    }
+        
+    func interpreterReset(){
+        
     }
 }
 
