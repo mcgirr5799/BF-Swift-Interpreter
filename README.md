@@ -14,7 +14,7 @@ To run and modify this app, you'll need Xcode installed on your Mac.
 
 1. Clone the repository:
    ```
-   git clone [repository URL]
+   git clone https://github.com/mcgirr5799/BF-Swift-Interpreter.git
    ```
 2. Open the project:
    - Navigate to the cloned directory and open the `.xcodeproj` file in Xcode.
