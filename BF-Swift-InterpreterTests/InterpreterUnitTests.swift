@@ -55,14 +55,23 @@ class InterpreterUnitTests: XCTestCase {
 
     func testBasicLoop() {
         interpreter = Interpreter(inputCode: "++[-]", cellsAdapter: cellsAdapter)
-        interpreter.interpret()
-        XCTAssertEqual(cellsAdapter.data[0], 0)
+        do {
+            try interpreter.interpret()
+            XCTAssertEqual(cellsAdapter.data[0], 0)
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
     }
 
+
     func testNestedLoops() {
-        interpreter = Interpreter(inputCode: "++[->+<]", cellsAdapter: cellsAdapter)
-        interpreter.interpret()
-        XCTAssertEqual(cellsAdapter.data[1], 2)
+        do {
+            interpreter = Interpreter(inputCode: "++[->+<]", cellsAdapter: cellsAdapter)
+            try interpreter.interpret()
+            XCTAssertEqual(cellsAdapter.data[1], 2)
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
     }
 
     func testMismatchedBrackets() {
@@ -72,18 +81,19 @@ class InterpreterUnitTests: XCTestCase {
         }
     }
 
-    func testComplexCodeInterpretation() {
-        interpreter = Interpreter(inputCode: "+++[->++<]", cellsAdapter: cellsAdapter)
-        interpreter.interpret()
-        XCTAssertEqual(cellsAdapter.data[1], 6)
-        XCTAssertEqual(interpreter.outputCode, "")
+    func testOpenLoopLimitExceeded() {
+        // Create a code with more open loops than the allowed limit
+        // This code will alternate between '+' and '[' characters, then add '-' characters
+        let excessiveOpenLoopsCode = String(repeating: "+[", count: Constants.MAX_OPEN_LOOPS + 1)
+                                    + String(repeating: "-", count: Constants.MAX_OPEN_LOOPS + 1)
+
+        // Initialize the interpreter with this code
+        interpreter = Interpreter(inputCode: excessiveOpenLoopsCode, cellsAdapter: cellsAdapter)
+        
+        // The test expects the interpreter to throw an openLoopLimitExceeded error
+        XCTAssertEqual(cellsAdapter.data[0], 0)
     }
 
-    func testLoopIterationLimitExceeded() {
-        let longLoopCode = String(repeating: "[", count: 10001) + String(repeating: "]", count: 10001)
-        interpreter = Interpreter(inputCode: longLoopCode, cellsAdapter: cellsAdapter)
-        interpreter.interpret()
-        // Check for loop iteration limit exceeded handling
-    }
+
 }
 

@@ -7,7 +7,8 @@ class Interpreter {
     private var codePointer = 0
     private var instructionPointer = 0
     private var loopIterationCounter = 0
-    private let maxLoopIterations = 10000
+    private var openLoopsCounter = 0
+    private let maxLoopCounter = 0
 
     init(inputCode: String, cellsAdapter: CellsAdapter) {
         self.inputCode = inputCode
@@ -39,35 +40,35 @@ class Interpreter {
                 outputCode += character
             }
         case "[":
+            print("At '[', Cell \(cellsAdapter.pointedCellPosition) value: \(cellsAdapter.data[cellsAdapter.pointedCellPosition])")
             if cellsAdapter.data[cellsAdapter.pointedCellPosition] == 0 {
-                // Skip the loop: Find the index of the matching ']' and jump to the next command
-                codePointer = try findClosingBracket(for: codePointer) + 1
+                let newCodePointer = try findClosingBracket(for: codePointer) + 1
+                print("Skipping loop: Moving codePointer from \(codePointer) to \(newCodePointer)")
+                codePointer = newCodePointer
             } else {
-                // Enter the loop: Store this position to return later
-                instructionPointer = codePointer + 1
-                loopIterationCounter = 0
+                print("Entering loop: Setting instructionPointer to \(codePointer)")
+                instructionPointer = codePointer
             }
 
+            openLoopsCounter += 1
+            print(openLoopsCounter)
+            if(openLoopsCounter > Constants.MAX_OPEN_LOOPS){
+                throw InterpreterError.openLoopLimitExceeded
+            }
         case "]":
+            print("At ']', Cell \(cellsAdapter.pointedCellPosition) value: \(cellsAdapter.data[cellsAdapter.pointedCellPosition])")
             if cellsAdapter.data[cellsAdapter.pointedCellPosition] != 0 {
-                // Continue the loop: Jump back to the command after the matching '['
-                codePointer = instructionPointer + 1
-                loopIterationCounter += 1
-                if loopIterationCounter > maxLoopIterations {
-                    print("Error: Loop iteration limit exceeded")
-                    // Handle loop iteration limit exceeded
-                }
+                print("Continuing loop: Moving codePointer back to instructionPointer \(instructionPointer)")
+                codePointer = instructionPointer
             } else {
-                // Exit the loop: Move to the next command
+                print("Exiting loop: Incrementing codePointer from \(codePointer) to \(codePointer + 1)")
                 codePointer += 1
             }
 
         default:
             break
         }
-            if command != "[" && command != "]" {
-            codePointer += 1
-        }
+        codePointer += 1
     }
 
     func step() {
@@ -88,27 +89,17 @@ class Interpreter {
     }
 
 
-    func interpret() {
-        do {
-            try checkForMismatchedBrackets()
+    func interpret() throws {
+        try checkForMismatchedBrackets()
 
-            cellsAdapter.resetCells()
-            codePointer = 0
-            instructionPointer = 0
-            loopIterationCounter = 0
-            outputCode = ""
+        cellsAdapter.resetCells()
+        codePointer = 0
+        instructionPointer = 0
+        loopIterationCounter = 0
+        outputCode = ""
 
-            while codePointer < inputCode.count {
-                try executeCommand()
-            }
-        } catch InterpreterError.mismatchedBracketsError {
-            print("Error: Mismatched brackets")
-        } catch InterpreterError.underflowError {
-            print("Error: Cell pointer underflow")
-        } catch InterpreterError.overflowError {
-            print("Error: Cell pointer overflow")
-        } catch {
-            print("An unexpected error occurred: \(error)")
+        while codePointer < inputCode.count {
+            try executeCommand()
         }
     }
 
@@ -132,25 +123,31 @@ class Interpreter {
     private func findClosingBracket(for index: Int) throws -> Int {
         var counter = 1
         var currentIndex = index + 1
-
-        while currentIndex < inputCode.count && counter > 0 {
+        
+        print(index , "is the opener")
+        while currentIndex < inputCode.count {
             let character = Array(inputCode)[currentIndex]
 
             if character == "[" {
                 counter += 1
             } else if character == "]" {
                 counter -= 1
+                if counter == 0 {
+                    return currentIndex
+                }
             }
 
             currentIndex += 1
         }
 
         if counter != 0 {
-            // Instead of printing, throw the mismatched brackets error
+            // If we exit the loop and counter is not zero, it means we have mismatched brackets
             throw InterpreterError.mismatchedBracketsError
         }
 
-        return currentIndex - 1
+        print(currentIndex , "is the closer")
+        return currentIndex
     }
+
 
 }

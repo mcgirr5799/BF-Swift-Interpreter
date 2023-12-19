@@ -158,12 +158,23 @@ struct ButtonView: View {
     
     func interpretCode(inputCode: String, cellsAdapter: CellsAdapter) {
         let interpreter = Interpreter(inputCode: inputCode, cellsAdapter: cellsAdapter)
-        interpreter.interpret()
         
-        DispatchQueue.main.async {
-            self.outputCode = interpreter.outputCode
+        do {
+            try interpreter.interpret()
+            
+            DispatchQueue.main.async {
+                self.outputCode = interpreter.outputCode
+            }
+        } catch {
+            // Handle the error here. For example, you could update the UI to show an error message.
+            print("An error occurred during interpretation: \(error)")
+            DispatchQueue.main.async {
+                // Optionally, update the UI or outputCode in case of error
+                self.outputCode = "Error: \(error)"
+            }
         }
     }
+
     
     func interpretCode(inputCode: String, cellsAdapter: CellsAdapter, step: Bool) {
         if step{

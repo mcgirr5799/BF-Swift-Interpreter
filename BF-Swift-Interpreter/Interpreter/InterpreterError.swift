@@ -9,4 +9,6 @@ enum InterpreterError: Error {
     case underflowError
     case overflowError
     case mismatchedBracketsError
+    case loopLimitExceeded
+    case openLoopLimitExceeded
 }
