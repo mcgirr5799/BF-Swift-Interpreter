@@ -30,14 +30,18 @@ To test the app:
 Get a glimpse of the Brainfuck Interpreter in action:
 
 1. **Home Page**
+<div align="center">
 
 ![Home Page](Screenshots/Home%20Screen.png)
+
+</div>
 
 _The intuitive home page of the Brainfuck Interpreter. Here, users can immediately start typing in Brainfuck code, with clear options for running, debugging, and resetting their code. Designed for simplicity and ease of use._
 
 2. **Hello World Example**
-
+<div align="center">
 ![Hello World Example](Screenshots/Hello%20World.png)
+</div>
 
 _Experience the classic "Hello World" program in Brainfuck. This screenshot shows the app running the iconic introductory code snippet, demonstrating the interpreter's ability to execute Brainfuck code seamlessly._
 
