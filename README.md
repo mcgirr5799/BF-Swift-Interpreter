@@ -31,7 +31,7 @@ Get a glimpse of the Brainfuck Interpreter in action:
 
 1. **Home Page**
 
-![Home Page](Screenshots/Hello%20World.png)
+![Home Page](Screenshots/Home%20Screen.png)
 
 _The intuitive home page of the Brainfuck Interpreter. Here, users can immediately start typing in Brainfuck code, with clear options for running, debugging, and resetting their code. Designed for simplicity and ease of use._
 
