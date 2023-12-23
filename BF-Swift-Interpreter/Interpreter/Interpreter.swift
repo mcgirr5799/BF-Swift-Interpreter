@@ -58,13 +58,11 @@ class Interpreter {
         case "]":
             print("At ']', Cell \(cellsAdapter.pointedCellPosition) value: \(cellsAdapter.data[cellsAdapter.pointedCellPosition])")
             if cellsAdapter.data[cellsAdapter.pointedCellPosition] != 0 {
-                print("Continuing loop: Moving codePointer back to instructionPointer \(instructionPointer)")
+                // Loop condition is met, go back to the start of the loop.
                 codePointer = instructionPointer
             } else {
-                print("Exiting loop: Incrementing codePointer from \(codePointer) to \(codePointer + 1)")
-                codePointer += 1
+                // Loop condition is not met, exit the loop and move to the next command.
             }
-
         default:
             break
         }
@@ -74,9 +72,6 @@ class Interpreter {
     func step() {
         do {
             try executeCommand()
-            if codePointer >= inputCode.count {
-                print("Interpretation completed. Final output: \(outputCode)")
-            }
         } catch InterpreterError.mismatchedBracketsError {
             print("Error: Mismatched brackets")
         } catch InterpreterError.underflowError {
@@ -85,6 +80,10 @@ class Interpreter {
             print("Error: Cell pointer overflow")
         } catch {
             print("An unexpected error occurred: \(error)")
+        }
+        
+        if codePointer >= inputCode.count {
+            print("Interpretation completed. Final output: \(outputCode)")
         }
     }
 

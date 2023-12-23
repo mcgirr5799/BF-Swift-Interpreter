@@ -27,6 +27,17 @@ class InterpreterUnitTests: XCTestCase {
         interpreter.step()
         XCTAssertEqual(cellsAdapter.data[0], 1)
     }
+    
+    func testIncrementOverflow(){
+        let testCode = String(repeating: "+", count: 256)
+        interpreter = Interpreter(inputCode: testCode, cellsAdapter: cellsAdapter)
+        do {
+            try interpreter.interpret()
+            XCTAssertEqual(cellsAdapter.data[0], 0)
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
+    }
 
     func testDecrementCommand() {
         interpreter = Interpreter(inputCode: "-", cellsAdapter: cellsAdapter)
@@ -34,6 +45,17 @@ class InterpreterUnitTests: XCTestCase {
         XCTAssertEqual(cellsAdapter.data[0], 255)  // Assuming 8-bit underflow since we don't need negative nums
     }
 
+    func testDecrementOverflow(){
+        let testCode = "-"
+        interpreter = Interpreter(inputCode: testCode, cellsAdapter: cellsAdapter)
+        do {
+            try interpreter.interpret()
+            XCTAssertEqual(cellsAdapter.data[0], 255)
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
+    }
+    
     func testMoveRightCommand() {
         interpreter = Interpreter(inputCode: ">", cellsAdapter: cellsAdapter)
         interpreter.step()
@@ -94,6 +116,16 @@ class InterpreterUnitTests: XCTestCase {
         XCTAssertEqual(cellsAdapter.data[0], 0)
     }
 
+    func testHelloWorldLoopProgram() {
+        let inputCode = "-[------->+<]>-.-[->+++++<]>++.+++++++..+++.[--->+<]>-----.---[->+++<]>.-[--->+<]>---.+++.------.--------."
+        interpreter = Interpreter(inputCode: inputCode, cellsAdapter: cellsAdapter)
+        do{
+            try interpreter.interpret()
+            XCTAssertEqual(interpreter.outputCode, "Hello World")
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
+    }
 
 }
 

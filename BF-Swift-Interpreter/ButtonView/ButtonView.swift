@@ -12,6 +12,8 @@ struct ButtonView: View {
     @Binding var outputCode: String
     @ObservedObject var cellsAdapter: CellsAdapter
     
+   @State var interpreter: Interpreter?
+
     var body: some View {
         VStack {
             HStack {
@@ -156,39 +158,32 @@ struct ButtonView: View {
             }
     }
     
-    func interpretCode(inputCode: String, cellsAdapter: CellsAdapter) {
-        let interpreter = Interpreter(inputCode: inputCode, cellsAdapter: cellsAdapter)
-        
-        do {
-            try interpreter.interpret()
-            
-            DispatchQueue.main.async {
-                self.outputCode = interpreter.outputCode
+    func interpretCode(inputCode: String, cellsAdapter: CellsAdapter, step: Bool = false) {
+            if interpreter == nil || !step {
+                interpreter = Interpreter(inputCode: inputCode, cellsAdapter: cellsAdapter)
             }
-        } catch {
-            // Handle the error here. For example, you could update the UI to show an error message.
-            print("An error occurred during interpretation: \(error)")
-            DispatchQueue.main.async {
-                // Optionally, update the UI or outputCode in case of error
-                self.outputCode = "Error: \(error)"
-            }
-        }
-    }
 
-    
-    func interpretCode(inputCode: String, cellsAdapter: CellsAdapter, step: Bool) {
-        if step{
-            let interpreter = Interpreter(inputCode: inputCode, cellsAdapter: cellsAdapter)
-            interpreter.step()
-            
+            if step {
+                interpreter?.step()
+            } else {
+                do {
+                    try interpreter?.interpret()
+                } catch {
+                    print("An error occurred during interpretation: \(error)")
+                    self.outputCode = "Error: \(error)"
+                }
+            }
+
             DispatchQueue.main.async {
-                self.outputCode = interpreter.outputCode
+                self.outputCode = interpreter?.outputCode ?? ""
             }
         }
-    }
         
     func interpreterReset(){
-        
+        interpreter = nil // Reset the interpreter
+        cellsAdapter.resetCells()
+        inputCode = ""
+        outputCode = ""
     }
 }
 
