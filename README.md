@@ -8,6 +8,7 @@ This repository hosts an iOS application that serves as an interpreter for the B
 - Error handling for syntax and runtime errors, such as mismatched brackets
 - Debugging tools to monitor code execution and cell values
 - Comprehensive unit tests ensuring reliability and performance
+- Stepping and highlighting debugging features
 
 ## Installation
 To run and modify this app, you'll need Xcode installed on your Mac.
@@ -25,6 +26,17 @@ To test the app:
 2. Select an iPhone simulator or connect an iPhone device.
 3. Press the 'Run' button in Xcode to build and run the app on the selected simulator or device.
 
+## Screenshots
+Get a glimpse of the Brainfuck Interpreter in action:
+
+1. **Home Page**
+![Home Page](Screenshots/Hello%20World.png)
+_The intuitive home page of the Brainfuck Interpreter. Here, users can immediately start typing in Brainfuck code, with clear options for running, debugging, and resetting their code. Designed for simplicity and ease of use._
+
+2. **Hello World Example**
+![Hello World Example](Screenshots/Hello%20World.png)
+_Experience the classic "Hello World" program in Brainfuck. This screenshot shows the app running the iconic introductory code snippet, demonstrating the interpreter's ability to execute Brainfuck code seamlessly._
+
 ## Running Tests
 - The project includes a suite of unit tests.
 - To run these tests, select the test navigator in Xcode and click the 'Run' button next to the test suite.
@@ -37,5 +49,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) f
 
 ## Acknowledgements
 - This app is inspired by the intriguing simplicity of the Brainfuck programming language and aims to make it more accessible to enthusiasts and learners alike.
-
-
